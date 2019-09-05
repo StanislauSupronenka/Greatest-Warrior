@@ -17,41 +17,41 @@ class Character:
     def rank(self):
         for key, value in RANK.items():
             if int(key) == math.floor(self.exp / 100):
-                print(value)
+                return value
 
     def level(self):
         if self.exp > 1000:
             print('Your lvl:', 100)
         else:
             my_lvl = math.floor(self.exp / 100)
-        print('Your lvl:', my_lvl)
+        return 'Your lvl:', my_lvl
 
     def experience(self):
-        print('Your experience:', self.exp)
+        return 'Your experience:', self.exp
 
     def training(self, training, exp, lvl):
         if lvl - math.floor(self.exp / 100) > 3:
-            print("Not strong enough")
+            return "Not strong enough"
         else:
             self.exp += exp
             achiv.append(training)
-            print(training)
+            return training
 
     def achivment(self):
-        print(achiv)
+        return achiv
 
     def battle(self, enemy_lvl):
         if enemy_lvl > 100 or enemy_lvl < 1:
-            print('Invalid lvl')
+            return 'Invalid lvl'
         else:
             if enemy_lvl == math.floor(self.exp / 100) or \
                     math.floor(self.exp / 100) - enemy_lvl == 1:
                 self.exp += int(20 * pow(1 / 2, math.floor(self.exp / 100) - enemy_lvl + 1))
-                print("A good fight")
+                return "A good fight"
             if math.floor(self.exp / 100) - enemy_lvl > 1:
-                print('Easy fight')
+                return 'Easy fight'
             if 5 > enemy_lvl - math.floor(self.exp / 100) > 1:
-                print("An intense fight")
+                return "An intense fight"
                 self.exp += int(20 * math.pow((enemy_lvl - math.floor(self.exp / 100)), 2))
             else:
-                print('You have been defeated')
+                return 'You have been defeated'
